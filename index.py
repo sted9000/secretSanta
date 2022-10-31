@@ -67,15 +67,7 @@ for (s, r) in zip(names, recipient):
     msg['To'] = email[s]
 
     with smtplib.SMTP('smtp.gmail.com', 587) as server:
-
-        # start TLS for security
         server.starttls()
-
-        # Authentication
         server.login(sender_email_address, sender_email_password)
-
-        # sending the mail
         server.sendmail(sender_email_address, email[s], msg.as_string())
-
-        # terminating the session
         server.quit()
